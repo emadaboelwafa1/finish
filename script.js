@@ -1,5 +1,4 @@
 // متغيرات عامة
-const secretKey = "MySecretKey"; // مفتاح التشفير
 const allowedLocations = [
     { lat: 31.2001, lng: 29.9187, radius: 10 }, // الإسكندرية
     { lat: 30.1233, lng: 31.2504, radius: 10 }, // شبرا الخيمة
@@ -50,7 +49,9 @@ function validateLogin() {
     const password = document.getElementById('password').value;
 
     if (username === "admin" && password === "admin") {
-        window.location.href = "https://forms.gle/tMXi6a6UDf3koxd37"; // أو يمكن استخدام رابط مشفر هنا
+        // بعد التحقق من البيانات الصحيحة، قم بإظهار النموذج داخل iframe
+        document.getElementById("loginForm").style.display = "none"; // إخفاء نموذج الدخول
+        document.getElementById("formContainer").style.display = "block"; // إظهار النموذج
     } else {
         alert("اسم المستخدم أو كلمة المرور غير صحيحة.");
     }
