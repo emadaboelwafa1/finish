@@ -21,17 +21,21 @@
             <div id="loginForm" style="display:none;">
                 <h2>تسجيل الدخول</h2>
                 <form onsubmit="return validateLogin()">
-                    <label for="username">admin</label>
+                    <label for="username">اسم المستخدم</label>
                     <input type="text" id="username" name="username" required>
-                    <label for="password">admin</label>
+                    <label for="password">كلمة المرور</label>
                     <input type="password" id="password" name="password" required>
                     <button type="submit">دخول</button>
                 </form>
             </div>
+
+            <!-- إخفاء رابط النموذج وعرضه داخل iframe -->
+            <div id="formContainer" style="display:none;">
+                <iframe id="googleForm" src="https://docs.google.com/forms/d/e/1FAIpQLSe1MF2zm5bVheW0f2gXCqZcypHe4Dr8B9fLn1q6RCkIJLRzbw/viewform" width="100%" height="700px" frameborder="0"></iframe>
+            </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1-crypto-js.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
