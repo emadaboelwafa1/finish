@@ -75,3 +75,19 @@ form button {
 form button:hover {
     background-color: #2ecc71;
 }
+
+/* تحديث نمط iframe */
+#googleForm {
+    width: 100%;
+    height: auto;
+    border: none;
+    overflow: hidden;
+}
+
+/* إضافة بعض التنسيق للتحكم في الشكل العام */
+#formContainer {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
