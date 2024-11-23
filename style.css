@@ -1,20 +1,91 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.background {
+    background-image: url('assets/background.jpg'); /* تأكد من المسار الصحيح للصورة */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #34495e;
+}
+
+.marquee {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    animation: scroll 5s linear infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+form label {
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #2ecc71;
+}
+
+/* تنسيق رسالة الترحيب */
+#welcomeMessage {
+    font-size: 20px;
+    margin-top: 20px;
+    color: green;
+}
+
+/* تصميم الـ iframe */
 #googleForm {
     width: 100%;
-    height: 100%; /* تم تعديل هذا السطر ليكون 100% */
+    height: 600px; /* تحديد ارتفاع iframe */
     border: none;
-    overflow: hidden;
-    display: block;
-}
-
-#formContainer {
-    display: block;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    overflow: hidden; /* إخفاء أي تمرير */
-}
-
-html, body {
-    height: 100%;
-    overflow: hidden; /* منع التمرير الرئيسي */
 }
