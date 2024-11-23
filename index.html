@@ -13,5 +13,23 @@
             <p>صفحة تسجيل دخول مهندسي مكافحة الحشرات</p>
             <div class="marquee">خدماتنا متوفرة لجميع العملاء في الإسكندرية وشبرا الخيمة</div>
 
+            <!-- رسالة تحديد الموقع -->
             <div id="locationMessage">
-                <h2>الرجاء السماح بتحديد موقعك للدخول
+                <h2>الرجاء السماح بتحديد موقعك للدخول</h2>
+            </div>
+
+            <!-- نموذج تسجيل الدخول -->
+            <div id="loginForm" style="display: none;">
+                <form onsubmit="return validateLogin()">
+                    <label for="username">اسم المستخدم:</label>
+                    <input type="text" id="username" name="username" placeholder="اسم المستخدم">
+                    <label for="password">كلمة المرور:</label>
+                    <input type="password" id="password" name="password" placeholder="كلمة المرور">
+                    <button type="submit">تسجيل الدخول</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
