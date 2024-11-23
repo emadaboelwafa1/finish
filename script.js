@@ -1,10 +1,11 @@
 // متغيرات عامة
 const allowedLocations = [
     { lat: 31.2001, lng: 29.9187, radius: 10 }, // الإسكندرية
-    { lat: 30.1233, lng: 31.2504, radius: 10 }, // شبرا الخيمة
-    { lat: 30.0444, lng: 31.2357, radius: 20 }  // القاهرة بدائري 20 كيلو
+    { lat: 30.1233, lng: 31.2504, radius: 10 },  // شبرا الخيمة
+    { lat: 30.0444, lng: 31.2357, radius: 20 }   // القاهرة بدائري 20 كيلو
 ];
 
+// دالة للتحقق من الموقع الجغرافي
 function validateLocation(lat, lng) {
     for (const location of allowedLocations) {
         const distance = calculateDistance(lat, lng, location.lat, location.lng);
@@ -15,6 +16,7 @@ function validateLocation(lat, lng) {
     return false;
 }
 
+// دالة لحساب المسافة بين نقطتين جغرافيتين
 function calculateDistance(lat1, lng1, lat2, lng2) {
     const R = 6371; // نصف قطر الأرض بالكيلومترات
     const dLat = (lat2 - lat1) * (Math.PI / 180);
@@ -27,6 +29,7 @@ function calculateDistance(lat1, lng1, lat2, lng2) {
     return R * c;
 }
 
+// دالة لتحديد الموقع
 function checkLocation() {
     navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -44,19 +47,24 @@ function checkLocation() {
     );
 }
 
+// دالة للتحقق من بيانات الدخول
 function validateLogin() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     if (username === "admin" && password === "admin") {
-        // بعد التحقق من البيانات الصحيحة، قم بإظهار النموذج داخل iframe
-        document.getElementById("loginForm").style.display = "none"; // إخفاء نموذج الدخول
+        document.getElementById("loginForm").style.display = "none";
+        const iframe = document.getElementById("googleForm");
+        iframe.src = "https://docs.google.com/forms/d/e/1FAIpQLSe1MF2zm5bVheW0f2gXCqZcypHe4Dr8B9fLn1q6RCkIJLRzbw/viewform";
         document.getElementById("formContainer").style.display = "block"; // إظهار النموذج
+
+        iframe.onload = function() {
+            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+        };
     } else {
         alert("اسم المستخدم أو كلمة المرور غير صحيحة.");
     }
     return false;
 }
 
-// قم بتشغيل التحقق من الموقع عند تحميل الصفحة
 checkLocation();
