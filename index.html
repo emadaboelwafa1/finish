@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شركة فينش لمكافحة الحشرات</title>
     <link rel="stylesheet" href="style.css">
-    <!-- إضافة مكتبة CryptoJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
     <div class="background">
@@ -15,23 +13,25 @@
             <p>صفحة تسجيل دخول مهندسي مكافحة الحشرات</p>
             <div class="marquee">خدماتنا متوفرة لجميع العملاء في الإسكندرية وشبرا الخيمة</div>
 
-            <!-- رسالة تحديد الموقع -->
             <div id="locationMessage">
                 <h2>الرجاء السماح بتحديد موقعك للدخول</h2>
             </div>
 
             <!-- نموذج تسجيل الدخول -->
-            <div id="loginForm" style="display: none;">
+            <div id="loginForm" style="display:none;">
+                <h2>تسجيل الدخول</h2>
                 <form onsubmit="return validateLogin()">
-                    <label for="username">اسم المستخدم:</label>
-                    <input type="text" id="username" name="username" placeholder="اسم المستخدم">
-                    <label for="password">كلمة المرور:</label>
-                    <input type="password" id="password" name="password" placeholder="كلمة المرور">
-                    <button type="submit">تسجيل الدخول</button>
+                    <label for="username">اسم المستخدم</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">كلمة المرور</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">دخول</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1-crypto-js.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
