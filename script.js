@@ -3,6 +3,8 @@ const secretKey = "MySecretKey"; // مفتاح التشفير
 const allowedLocations = [
     { lat: 31.2001, lng: 29.9187, radius: 10 }, // الإسكندرية
     { lat: 30.1233, lng: 31.2504, radius: 10 }  // شبرا الخيمة
+    { lat: 30.0444, lng: 31.2357, radius: 20 }  // القاهرة بدائري 20 كيلو
+
 ];
 
 function validateLocation(lat, lng) {
