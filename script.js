@@ -64,7 +64,7 @@ function validateLogin() {
     const password = document.getElementById('password').value.trim();
 
     if (username === "admin" && password === "admin") {
-        window.location.href = "https://forms.gle/tMXi6a6UDf3koxd37";
+        window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSe1MF2zm5bVheW0f2gXCqZcypHe4Dr8B9fLn1q6RCkIJLRzbw/viewform";
     } else {
         alert("اسم المستخدم أو كلمة المرور غير صحيحة.");
     }
