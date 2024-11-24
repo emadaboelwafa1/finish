@@ -8,6 +8,7 @@ const locations = [
     { name: "Location 1", latitude: 31.215, longitude: 29.924, tolerance: 0.05 }, // لوكيشن 1
     { name: "Location 2", latitude: 30.500, longitude: 31.100, tolerance: 0.05 }, // لوكيشن 2
     { name: "Location 3", latitude: 32.000, longitude: 28.500, tolerance: 0.05 }, // لوكيشن 3
+    { name: "Your Custom Location", latitude: 31.215, longitude: 29.924, tolerance: 0.05 } // لوكيشن جديد
 ];
 
 // دالة للتحقق من الموقع
