@@ -5,8 +5,7 @@ const users = {
 
 // مواقع مسموح بها
 const locations = [
-     { name: "Ramses", latitude: 30.0500, longitude: 31.2500, tolerance: 0.005 } // لوكيشن رمسيس (500 متر)
-
+    { name: "Ramses", latitude: 30.0500, longitude: 31.2500, tolerance: 0.01 } // لوكيشن رمسيس مع مسافة 1 كم
 ];
 
 // دالة لحساب المسافة بين نقطتين باستخدام Haversine formula
@@ -29,6 +28,7 @@ function checkLocation() {
     navigator.geolocation.getCurrentPosition(
         (position) => {
             const { latitude, longitude } = position.coords;
+            console.log(`الإحداثيات الحالية: Latitude: ${latitude}, Longitude: ${longitude}`); // عرض الإحداثيات
             if (validateLocation(latitude, longitude)) {
                 document.getElementById("locationMessage").style.display = "none"; // إخفاء رسالة الموقع
                 document.getElementById("loginForm").style.display = "block"; // إظهار نموذج الدخول
@@ -38,7 +38,8 @@ function checkLocation() {
         },
         () => {
             alert("يرجى السماح بالوصول إلى الموقع.");
-        }
+        },
+        { enableHighAccuracy: true } // تعزيز دقة الموقع
     );
 }
 
@@ -47,6 +48,7 @@ function validateLocation(latitude, longitude) {
     // تحقق إذا كان الموقع ضمن المواقع المسموح بها
     for (let location of locations) {
         const distance = getDistanceInKm(latitude, longitude, location.latitude, location.longitude);
+        console.log(`المسافة من الموقع الحالي إلى ${location.name}: ${distance} كم`);
         if (distance <= location.tolerance) {
             console.log(`الموقع متوافق مع: ${location.name}`);
             return true; // الموقع متوافق
