@@ -14,7 +14,7 @@ function checkLocation() {
 
                 // تحميل النموذج داخل iframe
                 const iframe = document.getElementById("protectedIframe");
-                iframe.src = "path/to/your/form"; // ضع رابط النموذج هنا
+                iframe.src = "https://forms.gle/tMXi6a6UDf3koxd37"; // ضع رابط النموذج هنا
                 iframe.style.display = "block";
             } else {
                 alert("عذرًا، لا يمكن الوصول إلى النموذج من موقعك الحالي.");
