@@ -5,7 +5,7 @@ const users = {
 
 // مواقع مسموح بها
 const locations = [
-    { name: "Location 1", latitude: 31.215, longitude: 29.924, tolerance: 0.05 }, // لوكيشن 1
+     { name: "Ramses", latitude: 30.0500, longitude: 31.2500, tolerance: 0.005 } // لوكيشن رمسيس (500 متر)
 
 ];
 
