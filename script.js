@@ -3,6 +3,13 @@ const users = {
     "sameh": { password: "123", sessionDuration: 5 }, // الجلسة لمدة 5 دقائق
 };
 
+// مواقع مسموح بها
+const locations = [
+    { name: "Location 1", latitude: 31.215, longitude: 29.924, tolerance: 0.05 }, // لوكيشن 1
+    { name: "Location 2", latitude: 30.500, longitude: 31.100, tolerance: 0.05 }, // لوكيشن 2
+    { name: "Location 3", latitude: 32.000, longitude: 28.500, tolerance: 0.05 }, // لوكيشن 3
+];
+
 // دالة للتحقق من الموقع
 function checkLocation() {
     navigator.geolocation.getCurrentPosition(
@@ -14,7 +21,7 @@ function checkLocation() {
 
                 // تحميل النموذج داخل iframe
                 const iframe = document.getElementById("protectedIframe");
-                iframe.src = "https://forms.gle/tMXi6a6UDf3koxd37"; // ضع رابط النموذج هنا
+                iframe.src = "https://forms.gle/tMXi6a6UDf3koxd37"; // رابط النموذج
                 iframe.style.display = "block";
             } else {
                 alert("عذرًا، لا يمكن الوصول إلى النموذج من موقعك الحالي.");
@@ -28,15 +35,15 @@ function checkLocation() {
 
 // دالة للتحقق من صحة الموقع
 function validateLocation(latitude, longitude) {
-    // تحقق من الإحداثيات المطلوبة
-    const allowedLatitude = 31.215; // قم بتحديث القيمة حسب موقعك
-    const allowedLongitude = 29.924; // قم بتحديث القيمة حسب موقعك
-    const tolerance = 0.05; // نطاق السماح
-
-    return (
-        Math.abs(latitude - allowedLatitude) <= tolerance &&
-        Math.abs(longitude - allowedLongitude) <= tolerance
-    );
+    // تحقق إذا كان الموقع ضمن المواقع المسموح بها
+    for (let location of locations) {
+        const distance = Math.hypot(latitude - location.latitude, longitude - location.longitude);
+        if (distance <= location.tolerance) {
+            console.log(`الموقع متوافق مع: ${location.name}`);
+            return true; // الموقع متوافق
+        }
+    }
+    return false; // الموقع غير متوافق
 }
 
 // دالة للتحقق من بيانات الدخول
