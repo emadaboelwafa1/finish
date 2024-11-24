@@ -1,6 +1,6 @@
 // بيانات المستخدمين
 const users = {
-    "أحمد": { password: "123", sessionDuration: 5 }, // الجلسة لمدة 5 دقائق
+    "sameh": { password: "123", sessionDuration: 5 }, // الجلسة لمدة 5 دقائق
 };
 
 // دالة للتحقق من الموقع
