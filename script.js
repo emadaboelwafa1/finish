@@ -3,10 +3,12 @@ const users = {
     "sameh": { password: "123", sessionDuration: 5 }, // الجلسة لمدة 5 دقائق
 };
 
-// مواقع مسموح بها
-const locations = [
-    { name: "Ramses", latitude: 30.0500, longitude: 31.2500, tolerance: 0.01 } // لوكيشن رمسيس مع مسافة 1 كم
-];
+// إحداثيات القاهرة
+const cairoLatitude = 30.0444;  // خط العرض للقاهرة
+const cairoLongitude = 31.2357; // خط الطول للقاهرة
+
+// المسافة المسموح بها (20 كيلو متر)
+const tolerance = 20; // 20 كم
 
 // دالة لحساب المسافة بين نقطتين باستخدام Haversine formula
 function getDistanceInKm(lat1, lon1, lat2, lon2) {
@@ -45,15 +47,16 @@ function checkLocation() {
 
 // دالة للتحقق من صحة الموقع
 function validateLocation(latitude, longitude) {
-    // تحقق إذا كان الموقع ضمن المواقع المسموح بها
-    for (let location of locations) {
-        const distance = getDistanceInKm(latitude, longitude, location.latitude, location.longitude);
-        console.log(`المسافة من الموقع الحالي إلى ${location.name}: ${distance} كم`);
-        if (distance <= location.tolerance) {
-            console.log(`الموقع متوافق مع: ${location.name}`);
-            return true; // الموقع متوافق
-        }
+    // حساب المسافة بين الموقع الحالي والقاهرة
+    const distance = getDistanceInKm(latitude, longitude, cairoLatitude, cairoLongitude);
+    console.log(`المسافة من الموقع الحالي إلى القاهرة: ${distance} كم`);
+
+    // إذا كانت المسافة ضمن 20 كم من القاهرة، الموقع متوافق
+    if (distance <= tolerance) {
+        console.log("الموقع متوافق مع المنطقة المحددة.");
+        return true; // الموقع متوافق
     }
+    
     return false; // الموقع غير متوافق
 }
 
