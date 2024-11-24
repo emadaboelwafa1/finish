@@ -11,6 +11,11 @@ function checkLocation() {
             if (validateLocation(latitude, longitude)) {
                 document.getElementById("locationMessage").style.display = "none";
                 document.getElementById("loginForm").style.display = "block";
+
+                // تحميل النموذج داخل iframe
+                const iframe = document.getElementById("protectedIframe");
+                iframe.src = "path/to/your/form"; // ضع رابط النموذج هنا
+                iframe.style.display = "block";
             } else {
                 alert("عذرًا، لا يمكن الوصول إلى النموذج من موقعك الحالي.");
             }
@@ -21,35 +26,35 @@ function checkLocation() {
     );
 }
 
+// دالة للتحقق من صحة الموقع
+function validateLocation(latitude, longitude) {
+    // تحقق من الإحداثيات المطلوبة
+    const allowedLatitude = 31.215; // قم بتحديث القيمة حسب موقعك
+    const allowedLongitude = 29.924; // قم بتحديث القيمة حسب موقعك
+    const tolerance = 0.05; // نطاق السماح
+
+    return (
+        Math.abs(latitude - allowedLatitude) <= tolerance &&
+        Math.abs(longitude - allowedLongitude) <= tolerance
+    );
+}
+
 // دالة للتحقق من بيانات الدخول
 function validateLogin() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     if (users[username] && users[username].password === password) {
-        const sessionDuration = users[username].sessionDuration;
-        
-        // رسالة ترحيب خاصة بالمستخدم
-        document.getElementById("welcomeMessage").innerText = `أهلاً بيك مهندس ${username}`;
-        document.getElementById("welcomeMessage").style.display = "block";
+        const welcomeMessage = document.getElementById("welcomeMessage");
+        welcomeMessage.textContent = `مرحبًا، ${username}! تم تسجيل دخولك بنجاح.`;
+        welcomeMessage.style.display = "block";
 
-        // تحديد مدة الجلسة
-        startSession(sessionDuration);
-
+        // أخفِ نموذج تسجيل الدخول
         document.getElementById("loginForm").style.display = "none";
-        const iframe = document.getElementById("googleForm");
-        iframe.src = "https://docs.google.com/forms/d/e/1FAIpQLSe1MF2zm5bVheW0f2gXCqZcypHe4Dr8B9fLn1q6RCkIJLRzbw/viewform";
-        document.getElementById("formContainer").style.display = "block";
-    } else {
-        alert("اسم المستخدم أو كلمة المرور غير صحيحة.");
-    }
-    return false;
-}
 
-// دالة لتحديد مدة الجلسة
-function startSession(duration) {
-    setTimeout(function() {
-        alert("انتهت الجلسة.");
-        window.location.reload(); // إعادة تحميل الصفحة بعد انتهاء الجلسة
-    }, duration * 60 * 1000); // تحويل الدقائق إلى ميلي ثانية
+        return false; // منع إعادة تحميل الصفحة
+    } else {
+        alert("بيانات تسجيل الدخول غير صحيحة.");
+        return false;
+    }
 }
