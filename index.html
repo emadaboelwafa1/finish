@@ -5,40 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شركة فينش لمكافحة الحشرات</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
-<body>
+<body onload="checkLocation()">
     <div class="background">
         <div class="content">
             <h1>شركة فينش لمكافحة الحشرات</h1>
             <p>صفحة تسجيل دخول مهندسي مكافحة الحشرات</p>
             <div class="marquee">خدماتنا متوفرة لجميع العملاء في الإسكندرية وشبرا الخيمة</div>
 
+            <!-- رسالة السماح بالموقع -->
             <div id="locationMessage">
                 <h2>الرجاء السماح بتحديد موقعك للدخول</h2>
             </div>
 
-            <!-- رسالة الترحيب الخاصة بالمستخدم -->
+            <!-- رسالة الترحيب -->
             <div id="welcomeMessage" style="display:none; font-size: 18px; color: green; margin-top: 20px;"></div>
 
             <!-- نموذج تسجيل الدخول -->
             <div id="loginForm" style="display:none;">
                 <h2>تسجيل الدخول</h2>
                 <form onsubmit="return validateLogin()">
-                    <label for="username">اسم المستخدم</label>
-                    <input type="text" id="username" name="username" required>
-                    <label for="password">كلمة المرور</label>
-                    <input type="password" id="password" name="password" required>
-                    <button type="submit">دخول</button>
+                    <label for="username">اسم المستخدم:</label>
+                    <input type="text" id="username" required>
+                    <br>
+                    <label for="password">كلمة المرور:</label>
+                    <input type="password" id="password" required>
+                    <br>
+                    <button type="submit">تسجيل الدخول</button>
                 </form>
             </div>
 
-            <!-- النموذج داخل iframe -->
-            <div id="formContainer" style="display:none;">
-                <iframe id="googleForm" src="" width="100%" height="600px" frameborder="0"></iframe>
-            </div>
+            <!-- الإطار المحمي للنموذج -->
+            <iframe id="protectedIframe" src="" style="display:none; width:100%; height:500px; border:none;"></iframe>
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
